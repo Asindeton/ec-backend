@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-12-22T16:55:38.407Z"
+    "x-generation-date": "2024-12-22T18:13:52.129Z"
   },
   "x-strapi-config": {
     "plugins": [
@@ -38,7 +38,7 @@
     }
   ],
   "paths": {
-    "/test-data": {
+    "/general-data": {
       "get": {
         "responses": {
           "200": {
@@ -46,7 +46,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TestDataResponse"
+                  "$ref": "#/components/schemas/GeneralDataResponse"
                 }
               }
             }
@@ -103,7 +103,7 @@
           }
         },
         "tags": [
-          "Test-data"
+          "General-data"
         ],
         "parameters": [
           {
@@ -209,7 +209,7 @@
             }
           }
         ],
-        "operationId": "get/test-data"
+        "operationId": "get/general-data"
       },
       "put": {
         "responses": {
@@ -218,7 +218,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TestDataResponse"
+                  "$ref": "#/components/schemas/GeneralDataResponse"
                 }
               }
             }
@@ -275,16 +275,16 @@
           }
         },
         "tags": [
-          "Test-data"
+          "General-data"
         ],
         "parameters": [],
-        "operationId": "put/test-data",
+        "operationId": "put/general-data",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TestDataRequest"
+                "$ref": "#/components/schemas/GeneralDataRequest"
               }
             }
           }
@@ -355,10 +355,10 @@
           }
         },
         "tags": [
-          "Test-data"
+          "General-data"
         ],
         "parameters": [],
-        "operationId": "delete/test-data"
+        "operationId": "delete/general-data"
       }
     },
     "/upload": {
@@ -1813,16 +1813,19 @@
           }
         }
       },
-      "TestDataRequest": {
+      "GeneralDataRequest": {
         "type": "object",
         "required": [
           "data"
         ],
         "properties": {
           "data": {
+            "required": [
+              "siteName"
+            ],
             "type": "object",
             "properties": {
-              "testText": {
+              "siteName": {
                 "type": "string"
               },
               "locale": {
@@ -1846,13 +1849,13 @@
           }
         }
       },
-      "TestDataListResponse": {
+      "GeneralDataListResponse": {
         "type": "object",
         "properties": {
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/TestData"
+              "$ref": "#/components/schemas/GeneralData"
             }
           },
           "meta": {
@@ -1881,8 +1884,11 @@
           }
         }
       },
-      "TestData": {
+      "GeneralData": {
         "type": "object",
+        "required": [
+          "siteName"
+        ],
         "properties": {
           "id": {
             "type": "number"
@@ -1890,7 +1896,7 @@
           "documentId": {
             "type": "string"
           },
-          "testText": {
+          "siteName": {
             "type": "string"
           },
           "createdAt": {
@@ -2193,7 +2199,7 @@
                 "documentId": {
                   "type": "string"
                 },
-                "testText": {
+                "siteName": {
                   "type": "string"
                 },
                 "createdAt": {
@@ -2252,11 +2258,11 @@
           }
         }
       },
-      "TestDataResponse": {
+      "GeneralDataResponse": {
         "type": "object",
         "properties": {
           "data": {
-            "$ref": "#/components/schemas/TestData"
+            "$ref": "#/components/schemas/GeneralData"
           },
           "meta": {
             "type": "object"

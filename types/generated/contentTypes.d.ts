@@ -369,12 +369,13 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
-export interface ApiTestDataTestData extends Struct.SingleTypeSchema {
-  collectionName: 'tests_data';
+export interface ApiGeneralDataGeneralData extends Struct.SingleTypeSchema {
+  collectionName: 'generals_data';
   info: {
-    displayName: 'test data';
-    pluralName: 'tests-data';
-    singularName: 'test-data';
+    description: '';
+    displayName: 'general data';
+    pluralName: 'generals-data';
+    singularName: 'general-data';
   };
   options: {
     draftAndPublish: true;
@@ -386,11 +387,11 @@ export interface ApiTestDataTestData extends Struct.SingleTypeSchema {
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::test-data.test-data'
+      'api::general-data.general-data'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    testText: Schema.Attribute.String;
+    siteName: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -906,7 +907,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
-      'api::test-data.test-data': ApiTestDataTestData;
+      'api::general-data.general-data': ApiGeneralDataGeneralData;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_navigation_routes",
+  "info": {
+    "displayName": "route",
+    "description": "",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}
